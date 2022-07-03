@@ -1,40 +1,28 @@
 import React from 'react';
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
   theme,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import { ColorModeSwitcher } from './ColorModeSwitcher';
+// import { Logo } from './Logo';
+import {HomeLayout} from './Layouts';
+import { About, HomePages, Predict } from './Pages';
+import { AppRoutes } from './Utils';
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
+    <BrowserRouter>
+       <Routes>
+            <Route path={AppRoutes.home.path} element={<HomeLayout/>} >
+                <Route path={AppRoutes.home.path}  element={<HomePages/>} />
+                <Route path={AppRoutes.predict.path}  element={<Predict/>} />
+                <Route path={AppRoutes.about.path}  element={<About/>} />
+            </Route>
+       </Routes>
+
+    </BrowserRouter>
     </ChakraProvider>
   );
 }
