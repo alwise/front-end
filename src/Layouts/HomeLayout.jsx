@@ -1,4 +1,4 @@
-import { Flex, VStack,Text, Heading, Image, Box, ListItem, List, Button, Stack, Show, Switch, Divider } from '@chakra-ui/react'
+import { Flex, VStack,Text, Heading, Image, Box, ListItem, List, Button, Stack, Show, Divider } from '@chakra-ui/react'
 import React from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { logo, textLogo } from '../Assets';
@@ -35,10 +35,18 @@ export default function HomeLayout() {
   return (
     <VStack minW={"full"}  minH="full">
         <Flex  justifyContent={"space-between"} align="center" minW="full" height={"90"} shadow='md' borderWidth='0px' flexWrap={'wrap'} >
-              <Stack bg={Colors.primary} minH={'full'} minW={"2xs"} direction={['column']} align="center" spacing='-16px' pt={"5"} >
+              <Show below='md'>
+              <Stack bg={Colors.primary} minH={'full'} minW={"full"} direction={['column']} align="center" spacing='-16px' pt={"5"} >
                   <Image src={logo} width={70} mr="12"/>
                   <Image src={textLogo} width={160} />
                </Stack>
+              </Show>
+            <Show above='md'>
+            <Stack bg={Colors.primary} minH={'full'} minW={"2xs"} direction={['column']} align="center" spacing='-16px' pt={"5"} >
+                  <Image src={logo} width={70} mr="12"/>
+                  <Image src={textLogo} width={160} />
+               </Stack>
+            </Show>
            <Show above='md'><Heading pl="10" flex={1} size={"md"} >{loc.state?.title}</Heading></Show>
            <Show above='md'> <ColorModeSwitcher/></Show>
         </Flex>
@@ -59,7 +67,7 @@ export default function HomeLayout() {
               </VStack>
             </Show>
             <Show below='md' >
-                  <VStack  flex={1} p="10" spacing={16} >
+                  <VStack  flex={1} p="12" spacing={16} >
                     <HomePages/>
                     <Divider/>
                     <Predict/> 
