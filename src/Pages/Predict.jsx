@@ -1,10 +1,8 @@
-import { Box, Flex, Input, Stack, VStack,Text, Button, Divider, Heading, Tag, Progress, Show,StatGroup,Stat,StatLabel,
-  StatNumber,
+import { Box, Flex, Input, Stack, VStack,Text, Button, Divider, Heading, Tag, Show,StatGroup,Stat,StatLabel,
   StatHelpText,
   StatArrow } from '@chakra-ui/react'
 import React, { useState } from 'react'
 // import { useEffect } from 'react';
-import { FaDownload } from 'react-icons/fa'
 import { apiService } from '../Services/ApiServices';
 import { Colors } from '../Utils'
 
@@ -95,7 +93,7 @@ export default function Predict() {
       
      { !isLoading && isDone &&
           <VStack minW={"full"} borderWidth={1} borderTopWidth={30} borderColor={Colors.primary} p={12} spacing="10"  align={"flex-start"} flexWrap={"wrap"} >  
-            <VStack textAlign={"left"} >
+            <VStack align={"flex-start"} textAlign={"left"}  minW={"full"}>
                <Heading>Result</Heading>
                 <StatGroup  >
 
